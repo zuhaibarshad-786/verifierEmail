@@ -1,5 +1,13 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+
 export default function SignupPage() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const togglePasswordVisibility = () => setShowPassword(!showPassword);
+  const toggleConfirmPasswordVisibility = () => setShowConfirmPassword(!showConfirmPassword);
+
   return (
     <div
       className="min-h-screen w-full relative flex items-center justify-center px-4"
@@ -18,6 +26,7 @@ export default function SignupPage() {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -bottom-15 -right-10 h-100 md:w-120 sm:h-80 sm:w-80 rounded-full bg-[radial-gradient(circle_at_70%_70%,#5CB8FF4d,transparent_60%)]" />
       </div>
+
       {/* Card */}
       <div
         className="relative w-full max-w-lg rounded-3xl border border-white/10 p-6 sm:p-8 my-12 mt-20 mb-20"
@@ -29,7 +38,7 @@ export default function SignupPage() {
       >
         <div className="absolute inset-0 rounded-3xl shadow-[inset_0_0_80px_0_rgba(99,102,241,0.08)] pointer-events-none" />
         <h1 className="text-white text-2xl sm:text-3xl font-semibold text-center mb-6">
-          Welcome
+          Create Account
         </h1>
 
         {/* Form */}
@@ -77,13 +86,22 @@ export default function SignupPage() {
               >
                 Password
               </label>
-              <input
-                id="password"
-                type="password"
-                required
-                minLength={8}
-                className="w-full rounded-lg bg-white/10 text-white placeholder-white/50 px-3 py-2 outline-none focus:ring-2 focus:ring-fuchsia-400/50 border border-white/10"
-              />
+              <div className="relative">
+                <input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  required
+                  minLength={8}
+                  className="w-full rounded-lg bg-white/10 text-white placeholder-white/50 px-3 py-2 outline-none focus:ring-2 focus:ring-fuchsia-400/50 border border-white/10"
+                />
+                <button
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/50"
+                >
+                  {showPassword ? "Hide" : "Show"}
+                </button>
+              </div>
             </div>
 
             <div>
@@ -93,12 +111,21 @@ export default function SignupPage() {
               >
                 Confirm Password
               </label>
-              <input
-                id="confirmPassword"
-                type="password"
-                required
-                className="w-full rounded-lg bg-white/10 text-white placeholder-white/50 px-3 py-2 outline-none focus:ring-2 focus:ring-fuchsia-400/50 border border-white/10"
-              />
+              <div className="relative">
+                <input
+                  id="confirmPassword"
+                  type={showConfirmPassword ? "text" : "password"}
+                  required
+                  className="w-full rounded-lg bg-white/10 text-white placeholder-white/50 px-3 py-2 outline-none focus:ring-2 focus:ring-fuchsia-400/50 border border-white/10"
+                />
+                <button
+                  type="button"
+                  onClick={toggleConfirmPasswordVisibility}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/50"
+                >
+                  {showConfirmPassword ? "Hide" : "Show"}
+                </button>
+              </div>
             </div>
           </div>
 
@@ -124,7 +151,8 @@ export default function SignupPage() {
 
           <div className="flex items-center justify-start sm:justify-center text-xs sm:text-sm mt-2 gap-2">
             <span className="text-white">Already have an account?</span>
-            <Link to ="/login"
+            <Link
+              to="/login"
               className="text-[#C16598] hover:text-fuchsia-200 underline underline-offset-4"
             >
               Sign in

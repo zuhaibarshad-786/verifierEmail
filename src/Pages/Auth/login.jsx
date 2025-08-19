@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+
 export default function LoginPage() {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => setShowPassword(!showPassword);
+
   return (
     <div
       className="min-h-screen w-full relative flex items-center justify-center px-4"
@@ -56,11 +62,20 @@ export default function LoginPage() {
             >
               Password
             </label>
-            <input
-              id="password"
-              type="password"
-              className="w-full rounded-lg bg-white/10 text-white placeholder-white/50 px-3 py-2 outline-none focus:ring-2 focus:ring-fuchsia-400/50 border border-white/10"
-            />
+            <div className="relative">
+              <input
+                id="password"
+                type={showPassword ? "text" : "password"}
+                className="w-full rounded-lg bg-white/10 text-white placeholder-white/50 px-3 py-2 outline-none focus:ring-2 focus:ring-fuchsia-400/50 border border-white/10"
+              />
+              <button
+                type="button"
+                onClick={togglePasswordVisibility}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/50"
+              >
+                {showPassword ? "Hide" : "Show"}
+              </button>
+            </div>
           </div>
 
           <label className="flex items-center gap-2 text-white/80 text-sm select-none">
@@ -89,8 +104,7 @@ export default function LoginPage() {
             >
               Forgot Password?
             </Link>
-            <Link to ="/SignUp"
-             
+            <Link to="/SignUp"
               className="text-[#C16598] hover:text-fuchsia-200 underline underline-offset-4"
             >
               Create Account
