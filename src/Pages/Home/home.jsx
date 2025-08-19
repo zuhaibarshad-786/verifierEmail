@@ -79,7 +79,7 @@ export default function Home() {
       </div>
       {/* Moon horizon  */}
       <div className="flex justify-center bg-[#0F0E1A]">
-        <img width={900} height={100} src="/moonHorizon.png" alt="" />
+        <img width={900} height={100} src="/moonHorizon.PNG" alt="" />
       </div>
       <EmailToolsSection />
       {/* Ready to transform section */}
