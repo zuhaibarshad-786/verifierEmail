@@ -78,7 +78,6 @@ export default function Home() {
         </main>
       </div>
       {/* Moon image */}
-      
       <div className="flex justify-center bg-[#0F0E1A]">
         <img width={900} height={99} src="/moonHorizon.png" alt="" />
       </div>
