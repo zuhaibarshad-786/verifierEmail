@@ -72,13 +72,16 @@ export default function Home() {
             and inbox checks.
           </p>
 
-          <Link to= "/SignUp" className="mt-8 lg:w-60 sm:mt-10 px-6 sm:px-8 py-2.5 sm:py-3 bg-gradient-to-r cursor-pointer from-pink-500 to-purple-500 rounded-full text-sm sm:text-lg font-semibold hover:opacity-90 transition">
+          <Link
+            to="/SignUp"
+            className="mt-8 lg:w-60 sm:mt-10 px-6 sm:px-8 py-2.5 sm:py-3 bg-gradient-to-r cursor-pointer from-pink-500 to-purple-500 rounded-full text-sm sm:text-lg font-semibold hover:opacity-90 transition"
+          >
             Get Started
           </Link>
         </main>
       </div>
       {/* Moon horizon  */}
-      <div className="flex -mt-20 justify-center bg-[#0F0E1A]">
+      <div className="flex -mt-22 md:-mt-8 justify-center bg-[#0F0E1A]">
         <img width={900} height={100} src="/moonHorizon.png" alt="" />
       </div>
       <EmailToolsSection />
